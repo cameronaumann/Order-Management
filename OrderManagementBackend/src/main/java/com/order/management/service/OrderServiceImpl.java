@@ -7,17 +7,23 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.order.management.model.Order;
+import com.order.management.model.Product;
 import com.order.management.repository.OrderRepo;
+import com.order.management.repository.ProductRepo;
 
 @Service
 public class OrderServiceImpl implements OrderService {
 	
 	private OrderRepo repo;
+	private ProductRepo productRepo;
 	
 	@Autowired
-	public OrderServiceImpl(OrderRepo repo) {
+	public OrderServiceImpl(OrderRepo repo, ProductRepo productRepo) {
 		this.repo = repo;
+		this.productRepo = productRepo;
 	}
+	
+//	PRODUCT------------------------------------------
 
 	@Override
 	public void newOrder(Order order) {
@@ -41,5 +47,30 @@ public class OrderServiceImpl implements OrderService {
 		repo.delete(order);
 		
 	}
+	
+//	ORDER---------------------------------------
+
+	@Override
+	public void getProductsByOrder(Order order) {
+		repo.g
+		
+	}
+
+	@Override
+	public void newProduct(Product product) {
+		productRepo.save(product);
+		
+	}
+
+	@Override
+	public void updateProduct(Product product) {
+		productRepo.save(product);
+	}
+
+	@Override
+	public void deleteProduct(Product product) {
+		productRepo.delete(product);
+	}
+	
 	
 }
