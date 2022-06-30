@@ -9,6 +9,5 @@ import com.order.management.model.Order;
 @Repository
 @Transactional
 public interface OrderRepo extends JpaRepository<Order, Integer> {
-	
 
 }

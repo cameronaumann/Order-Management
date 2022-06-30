@@ -9,17 +9,17 @@ public interface OrderService {
 	
 //	ORDER
 
-	void newOrder(Order order);
+	List<Order> getOrders(); //working
 
-	List<Order> getOrders();
+	void newOrder(Order order); //working
 
-	void updateOrder(Order order);
+	void updateOrder(Order order); //obsolete
 
-	void deleteOrder(Order order);
+	void deleteOrder(Order order); //contingent upon custom jpa method
 	
 //	PRODUCT
 
-	void getProductsByOrder(Order order);
+	List<Product> getProductsByOrder(Order order); //working :)
 
 	void newProduct(Product product);
 

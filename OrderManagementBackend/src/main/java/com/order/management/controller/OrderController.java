@@ -30,20 +30,20 @@ public class OrderController {
 	
 	
 //	-------------------------------------------ORDERS-------------------------------------------------------
-	@GetMapping("/orders")
+	@GetMapping("/orders") //working
 	@ResponseStatus(HttpStatus.OK)
 	public List<Order> getOrders() {
 		return service.getOrders();
 	}
 	
-	@PostMapping("/orders/new")
+	@PostMapping("/orders/new") //working
 	@ResponseStatus(HttpStatus.CREATED)
 	public void newOrder(/*@RequestBody Order order*/) {
 		service.newOrder(new Order());
 //		service.newOrder(order);
 	}
 	
-	@Deprecated //no need to update the order
+	@Deprecated //no need to update the order ; obsolete
 	@PutMapping("/orders/update")
 	@ResponseStatus(HttpStatus.OK)
 	public void updateOrder(@RequestBody Order order) {
@@ -54,7 +54,7 @@ public class OrderController {
 		}
 	}
 	
-	@DeleteMapping("/orders/delete")
+	@DeleteMapping("/orders/delete") //working
 	@ResponseStatus(HttpStatus.OK)
 	public void deleteOrder(@RequestBody Order order) {
 		if (order.getId() == 0) {
@@ -64,27 +64,27 @@ public class OrderController {
 		}
 	}
 //	-------------------------------------------PRODUCTS-------------------------------------------------------
-	@GetMapping("/products")
+	@GetMapping("/products") //working
 	@ResponseStatus(HttpStatus.OK)
 	public List<Product> getProductsByOrder(@RequestBody Order order) {
 		if (order.getId() == 0 || order.getId() == null || order.getCreated() == null) {
 			throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Missing order details");
-		} else {
-			service.getProductsByOrder(order);
 		}
+		return service.getProductsByOrder(order);
 	}
 	
-	@PostMapping("/products/new")
+	
+	@PostMapping("/products/new") //working send id as a child of order within the product json
 	@ResponseStatus(HttpStatus.CREATED)
 	public void addProduct(@RequestBody Product product) {
-		if (product.getId() == 0 || product.getId() == null || product.getName() == null || product.getPrice() == 0 || product.getManufacturer() == null || product.getManufacturer() == "") {
+		if (product.getName() == null || product.getPrice() == 0 || product.getManufacturer() == null || product.getManufacturer() == "") {
 			throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Missing product details");
 		} else {
 			service.newProduct(product);
 		}
 	}
 	
-	@PutMapping("/products/update")
+	@PutMapping("/products/update") //working 
 	@ResponseStatus(HttpStatus.OK)
 	public void updateProduct(@RequestBody Product product) {
 		if (product.getId() == 0 || product.getId() == null || product.getName() == null || product.getPrice() == 0 || product.getManufacturer() == null || product.getManufacturer() == "") {
@@ -94,7 +94,7 @@ public class OrderController {
 		}
 	}
 	
-	@DeleteMapping("/products/delete")
+	@DeleteMapping("/products/delete") //working
 	@ResponseStatus(HttpStatus.OK)
 	public void deleteProduct(@RequestBody Product product) {
 		if (product.getId() == 0 || product.getId() == null || product.getName() == null || product.getPrice() == 0 || product.getManufacturer() == null || product.getManufacturer() == "") {
