@@ -39,11 +39,11 @@ public class OrderServiceImpl implements OrderService {
 
 	@Override
 	public void updateOrder(Order order) {
-		orderRepo.save(order); //this might need to be changed, documentation says save also acts as a merge
+		orderRepo.save(order); 
 	}
 
 	@Override
-	public void deleteOrder(Order order) { //contingent upon the custom findallbyorder method within the productrepo
+	public void deleteOrder(Order order) { 
 //	get products, iterate and delete then remove order
 		List<Product> products = productRepo.findAllByOrder(order);
 		
