@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- CSS only -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+    <link rel="stylesheet" href="../css/style.css">
+
+    <title>New Order</title>
+</head>
+<body>
+    <header class="navbar">
+        <h6 class="h6 text-secondary">OMS</h6>
+        <a class="btn btn-primary" id="cancel" href="/html/manager.html">Cancel Order</a>
+    </header>
+
+    <form class="form" id="newOrder" name="newOrder">
+        <input id="submit" type="submit" name="submit">
+        <div id="form">
+            <input name="name" type="text" placeholder="Product Name" required>
+            <input name="price"  type="number" placeholder="Price USD" step="0.01" min="0.01" required>
+            <input name="manufacturer" type="text" placeholder="Manufacturer" required>
+            <!-- <label for="submit">Submit Order</label> -->
+        </div>
+        
+    </form>
+    <br>
+    <button id="add" onclick="addProduct()">Add Another Product to Your Order</button>
+    
+</body>
+<!-- JavaScript Bundle with Popper -->
+<script src="../js/newOrder.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2"
+    crossorigin="anonymous"></script>
+</html>

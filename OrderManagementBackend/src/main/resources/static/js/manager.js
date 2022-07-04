@@ -40,16 +40,34 @@ function getProducts(order) {
     
 }
 
+function getAllProducts() {
+    let xhttp = new XMLHttpRequest();
+
+    xhttp.onreadystatechange = function() {
+
+        if (xhttp.readyState==4 && xhttp.status==200) {
+            let products = JSON.parse(xhttp.responseText);
+            console.log(products);
+            loadAllProducts(products);
+        }
+    }
+
+    xhttp.open('GET', host + '/products/all');
+    xhttp.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
+    xhttp.send();
+}
+
 function loadOrders(orders) {
 
     for (let x = 0; x < orders.length; x++) {
         
-        let thead = document.createElement("thead")
+        var thead = document.createElement("thead")
+        var tbody = document.createElement("tbody");
         
-        let tr = document.createElement("tr");
+        var tr = document.createElement("tr");
         
-        let td1 = document.createElement("td");
-        let td2 = document.createElement("td");
+        var td1 = document.createElement("td");
+        var td2 = document.createElement("td");
         // let td3 = document.createElement("td");
 
         // let button = document.createElement("button");
@@ -58,8 +76,8 @@ function loadOrders(orders) {
         // button.innerHTML = "View Products";
         
         
-        let id = document.createTextNode(orders[x].id);
-        let date = document.createTextNode(orders[x].created);
+        var id = document.createTextNode(orders[x].id);
+        var date = document.createTextNode(orders[x].created);
         
         td1.appendChild(id);
         td2.appendChild(date);
@@ -69,33 +87,67 @@ function loadOrders(orders) {
         tr.appendChild(td2);
         // tr.appendChild(td3);
         thead.appendChild(tr);
-        let selection = document.querySelector("#display");
-        selection.appendChild(thead);
+        var selection = document.querySelector("#display");
         thead.setAttribute("id", "order" + orders[x].id)
-        getProducts(orders[x]);
+        thead.setAttribute("class", "")
+        tbody.setAttribute("id", "products" + orders[x].id)
+        selection.appendChild(thead);
+        selection.appendChild(tbody);
+        // getProducts(orders[x]);
+    }
+    getAllProducts();
+}
+
+function loadAllProducts(products) {
+
+
+
+    for (var x = 0; x < products.length; x++) {
+
+        var tbody = document.querySelector("#products" + products[x].order.id)
+        console.log(tbody);
+
+        var tr = document.createElement("tr");
+        var td1 = document.createElement("td");
+        var td2 = document.createElement("td");
+        var td3 = document.createElement("td");
+        var td4 = document.createElement("td");
+
+        var id = document.createTextNode(products[x].id)
+        var name = document.createTextNode(products[x].name)
+        var price = document.createTextNode(products[x].price)
+        var manufacturer = document.createTextNode(products[x].manufacturer)
+
+        td1.appendChild(id);
+        td2.appendChild(name);
+        td3.appendChild(price);
+        td4.appendChild(manufacturer);
+
+        tr.appendChild(td1);
+        tr.appendChild(td2);
+        tr.appendChild(td3);
+        tbody.appendChild(tr);
     }
 }
 
 
-
-
 function loadProducts(products) {
 
-    for (let x = 0; x < products.length; x++) {
+    for (var x = 0; x < products.length; x++) {
         
-        let tbody = document.createElement("tbody");
+        var tbody = document.createElement("tbody");
 
-        let tr = document.createElement("tr");
+        var tr = document.createElement("tr");
 
-        let td1 = document.createElement("td");
-        let td2 = document.createElement("td");
-        let td3 = document.createElement("td");
-        let td4 = document.createElement("td");
+        var td1 = document.createElement("td");
+        var td2 = document.createElement("td");
+        var td3 = document.createElement("td");
+        var td4 = document.createElement("td");
 
-        let id = document.createTextNode(products[x].id)
-        let name = document.createTextNode(products[x].name)
-        let price = document.createTextNode(products[x].price)
-        let manufacturer = document.createTextNode(products[x].manufacturer)
+        var id = document.createTextNode(products[x].id)
+        var name = document.createTextNode(products[x].name)
+        var price = document.createTextNode(products[x].price)
+        var manufacturer = document.createTextNode(products[x].manufacturer)
 
         td1.appendChild(id);
         td2.appendChild(name);
@@ -109,7 +161,9 @@ function loadProducts(products) {
 
         tbody.appendChild(tr);
 
-        let selection = document.querySelector("#order" + products[x].order.id)
+        console.log(order);
+        console.log("#order" + products[x].order.id);
+        var selection = document.querySelector("#order" + products[x].order.id)
         selection.append(tbody);
 
 

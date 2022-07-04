@@ -1,5 +1,7 @@
 package com.order.management.controller;
 
+import java.awt.PageAttributes.MediaType;
+
 import java.time.LocalDateTime;
 import java.util.List;
 
@@ -14,6 +16,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.server.ResponseStatusException;
@@ -52,6 +55,14 @@ public class OrderController {
 		service.newOrder(new Order());
 	}
 	
+	
+	@PostMapping("/orders/new2") //working
+	@ResponseStatus(HttpStatus.CREATED)
+	public void newOrderPlus(@RequestBody List<Product> products) {
+		log.info("REQUEST: " + "POST /orders/new2 @ " + LocalDateTime.now());
+		service.newOrderPlus(new Order(), products);
+	}
+	
 	@Deprecated //no need to update the order ; obsolete
 	@PutMapping("/orders/update")
 	@ResponseStatus(HttpStatus.OK)
@@ -86,6 +97,12 @@ public class OrderController {
 		}
 		log.info("REQUEST: " + "GET /products @ " + LocalDateTime.now());
 		return service.getProductsByOrder(order);
+	}
+	
+	@GetMapping("/products/all")
+	@ResponseStatus(HttpStatus.OK)
+	public List<Product> getAllProducts() {
+		return service.getAllProducts();
 	}
 	
 	

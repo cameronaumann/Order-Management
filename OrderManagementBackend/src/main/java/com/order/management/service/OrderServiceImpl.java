@@ -33,6 +33,17 @@ public class OrderServiceImpl implements OrderService {
 	}
 
 	@Override
+	public void newOrderPlus(Order order, List<Product> products) {
+		order.setCreated(LocalDateTime.now());
+		orderRepo.save(order);
+		order.setId(orderRepo.findByCreated(order.getCreated()).getId());
+		for (Product product : products) {
+			product.setOrder(order);
+			productRepo.save(product);
+		}
+	}
+	
+	@Override
 	public List<Order> getOrders() {
 		return orderRepo.findAll();
 	}
@@ -60,6 +71,13 @@ public class OrderServiceImpl implements OrderService {
 	public List<Product> getProductsByOrder(Order order) {
 		return productRepo.findAllByOrder(order);
 	}
+	
+	
+
+	@Override
+	public List<Product> getAllProducts() {
+		return productRepo.findAll();
+	}
 
 	@Override
 	public void newProduct(Product product) {
@@ -76,6 +94,7 @@ public class OrderServiceImpl implements OrderService {
 	public void deleteProduct(Product product) {
 		productRepo.delete(product);
 	}
+
 	
 	
 }
