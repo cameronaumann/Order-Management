@@ -14,22 +14,22 @@
 <body>
     <header class="navbar">
         <h6 class="h6 text-secondary">OMS</h6>
-        <a class="btn btn-primary" id="cancel" href="/html/manager.html">Cancel Order</a>
+        <a class="btn btn-danger" id="cancel" href="/html/manager.html">Cancel Order</a>
     </header>
     <div class="container" id="container">
         <form class="newOrder" id="newOrder" name="newOrder">
-            <input id="submit" type="submit" name="submit">
-            <div class="formDiv">
+            <input id="submit" class="btn btn-primary" type="submit" name="submit">
+            <div class="formDiv mb-3 align-items-center">
                 <input name="name0" type="text" placeholder="Product Name" required>
                 <input name="price0"  type="number" placeholder="Price USD" step="0.01" min="0.01" required>
-                <input name="manufacturer0" type="text" placeholder="Manufacturer" required>
+                <input name="manufacturer" type="text" placeholder="Manufacturer" required>
                 <!-- <label for="submit">Submit Order</label> -->
             </div>
             
         </form>
     </div>
     <br>
-    <button id="add" onclick="addProduct()">Add Another Product to Your Order</button>
+    <button id="add" class="btn btn-outline-success" onclick="addProduct()">Add Another Product to Your Order</button>
     
 </body>
 <!-- JavaScript Bundle with Popper -->

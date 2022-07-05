@@ -12,11 +12,11 @@ form.addEventListener('submit', function(ev) {
     xhttp.setRequestHeader('Content-Type', 'application/json; charset=UTF-8');
 
 
-    var keys = ["name", "price", "manufacturer"];
+    // var keys = ["name", "price", "manufacturer"];
 
     var arr = [];
     var formDataObject = Object.fromEntries(formData.entries());
-    // console.log(formDataObject);  
+    console.log(formDataObject);  
 
     // for (var x = 0; x < numberOfProducts; x++) {
     //   var object = {};
@@ -41,7 +41,7 @@ form.addEventListener('submit', function(ev) {
       arr.push(object);
     }
 
-    xhttp.send(JSON.stringify(arr));
+    xhttp.send(JSON.stringify(arr));x
     ev.preventDefault();
     window.location.href = "http://localhost:8080/html/manager.html";
   }, false);    
@@ -50,7 +50,7 @@ form.addEventListener('submit', function(ev) {
     numberOfProducts++;
 
     var div = document.createElement("div");
-    div.setAttribute("class", "formDiv");
+    div.setAttribute("class", "formDiv align-items-center");
     var name = document.createElement("input");
     name.setAttribute("name", "name" + formNumber);
     name.setAttribute("placeholder", "Product Name");

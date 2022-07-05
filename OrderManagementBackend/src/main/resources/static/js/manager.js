@@ -10,7 +10,7 @@ window.onload = function() {
     getOrders();
 }
 
-function getOrders() {
+async function getOrders() {
 
     let xhttp = new XMLHttpRequest();
 
@@ -26,7 +26,7 @@ function getOrders() {
     xhttp.send();
 }
 
-function getAllProducts() {
+async function getAllProducts() {
     let xhttp = new XMLHttpRequest();
 
     xhttp.onreadystatechange = function() {
@@ -42,7 +42,7 @@ function getAllProducts() {
     xhttp.send();
 }
 
-function loadOrders(orders) {
+async function loadOrders(orders) {
 
     for (let x = 0; x < orders.length; x++) {
         
@@ -72,7 +72,7 @@ function loadOrders(orders) {
     getAllProducts();
 }
 
-function displaySearch(string) {
+async function displaySearch(string) {
     var table = document.getElementById("display");
     table.parentNode.removeChild(table);
     var newTable = document.createElement("table");
@@ -109,7 +109,7 @@ function displaySearch(string) {
 
 
 
-function loadAllProducts(products) {
+async function loadAllProducts(products) {
 
     for (var x = 0; x < products.length; x++) {
 
