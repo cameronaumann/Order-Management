@@ -1,6 +1,12 @@
 let host = 'http://localhost:8080/v1';
 
-window.onload = function () {
+const search = document.getElementById('search');
+search.addEventListener('click', function() {
+    displaySearch(document.getElementById("searchInput").value);
+});
+// console.log(document.getElementById("searchInput").value);
+// displaySearch(document.getElementById("searchInput").value)
+window.onload = function() {
     getOrders();
 }
 
@@ -12,33 +18,13 @@ function getOrders() {
 
         if (xhttp.readyState==4 && xhttp.status==200) {
             let orders = JSON.parse(xhttp.responseText);
-
-            loadOrders(orders);
+                loadOrders(orders);
         }
     }
 
     xhttp.open('GET', host + '/orders');
     xhttp.send();
 }
-
-// function getProducts(order) {
-
-//     let xhttp = new XMLHttpRequest();
-
-//     xhttp.onreadystatechange = function() {
-
-//         if (xhttp.readyState==4 && xhttp.status==200) {
-//             let products = JSON.parse(xhttp.responseText);
-
-//             loadProducts(products);
-//         }
-//     }
-
-//     xhttp.open('GET', host + '/products');
-//     xhttp.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
-//     xhttp.send(JSON.stringify(order));
-// 
-// }
 
 function getAllProducts() {
     let xhttp = new XMLHttpRequest();
@@ -47,7 +33,7 @@ function getAllProducts() {
 
         if (xhttp.readyState==4 && xhttp.status==200) {
             let products = JSON.parse(xhttp.responseText);
-            loadAllProducts(products);
+                loadAllProducts(products);
         }
     }
 
@@ -73,26 +59,24 @@ function loadOrders(orders) {
         
         td1.appendChild(id);
         td2.appendChild(date);
-        // td3.appendChild(button);
         
         tr.appendChild(td1);
         tr.appendChild(td2);
-        // tr.appendChild(td3);
         thead.appendChild(tr);
         var selection = document.querySelector("#display");
         thead.setAttribute("id", "order" + orders[x].id)
-        thead.setAttribute("class", "")
         tbody.setAttribute("id", "products" + orders[x].id)
         selection.appendChild(thead);
         selection.appendChild(tbody);
-        // getProducts(orders[x]);
     }
     getAllProducts();
 }
 
+function displaySearch(string) {
+    
+}
+
 function loadAllProducts(products) {
-
-
 
     for (var x = 0; x < products.length; x++) {
 
@@ -107,7 +91,7 @@ function loadAllProducts(products) {
 
         var id = document.createTextNode(products[x].id)
         var name = document.createTextNode(products[x].name)
-        var price = document.createTextNode(products[x].price)
+        var price = document.createTextNode("$" + products[x].price)
         var manufacturer = document.createTextNode(products[x].manufacturer)
 
         // td1.appendChild(id);
