@@ -1,52 +1,57 @@
 let host = 'http://localhost:8080/v1';
+let numberOfProducts = 1;
 
-// document.addEventListener("click", cancelOrder)
-// let formData = JSON.stringify(document.getElementById)
 
-const form = document.forms.namedItem("newOrder");
+
+const form = document.forms.namedItem("newOrder")
 form.addEventListener('submit', function(ev) {
-
-    // const oOutput = document.querySelector("div"),
     const formData = new FormData(form);
     const xhttp = new XMLHttpRequest();
     xhttp.open('POST', host + '/orders/new2', true);
     xhttp.setRequestHeader('Content-Type', 'application/json; charset=UTF-8');
-    
-    var object = {};
-    formData.a
-    formData.forEach(function(value, key) {
-        object[key] = value;
-        console.log(key + "  " + value)
-    });
-    xhttp.send('[' + JSON.stringify(object) + ']');
+    var arr = [];
+    for (var x = 0; x < numberOfProducts; x++) {
+      var object = {};
+      formData.forEach(function(value, key) {
+          object[key] = value;
+      });
+      arr.push(object);
+    }
+    xhttp.send(JSON.stringify(arr));
     ev.preventDefault();
+    window.location.replace("http://localhost:8080/html/manager.html");
   }, false);    
 
   function addProduct() {
+    numberOfProducts++;
 
-    var container = document.createElement("div")
-
+    var div = document.createElement("div");
+    div.setAttribute("class", "formDiv");
     var name = document.createElement("input");
+    name.setAttribute("name", "name");
     name.setAttribute("placeholder", "Product Name");
     name.setAttribute("type", "text");
     name.setAttribute("placeholder", "Product Name");
 
     var price = document.createElement("input");
+    price.setAttribute("name", "price");
     price.setAttribute("placeholder", "Price USD");
     price.setAttribute("type", "number");
     price.setAttribute("step", "0.01");
     price.setAttribute("min", "0.01");
     
     var manufacturer = document.createElement("input");
+    manufacturer.setAttribute("name", "manufacturer");
     manufacturer.setAttribute("placeholder", "Manufacturer")
     manufacturer.setAttribute("type", "text");
 
-    container.appendChild(name);
-    container.appendChild(price);
-    container.appendChild(manufacturer);
+    div.appendChild(name);
+    div.appendChild(price);
+    div.appendChild(manufacturer);
+    // div.appendChild(form);
 
-    var form = document.querySelector("#newOrder");
-    form.appendChild(container);
+    var outer = document.querySelector("#newOrder");
+    outer.appendChild(div);
   }
 // -------------------------------------------------------
 // let submitButton = document.querySelector('#submit');

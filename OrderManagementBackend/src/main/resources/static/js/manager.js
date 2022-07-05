@@ -21,24 +21,24 @@ function getOrders() {
     xhttp.send();
 }
 
-function getProducts(order) {
+// function getProducts(order) {
 
-    let xhttp = new XMLHttpRequest();
+//     let xhttp = new XMLHttpRequest();
 
-    xhttp.onreadystatechange = function() {
+//     xhttp.onreadystatechange = function() {
 
-        if (xhttp.readyState==4 && xhttp.status==200) {
-            let products = JSON.parse(xhttp.responseText);
+//         if (xhttp.readyState==4 && xhttp.status==200) {
+//             let products = JSON.parse(xhttp.responseText);
 
-            loadProducts(products);
-        }
-    }
+//             loadProducts(products);
+//         }
+//     }
 
-    xhttp.open('GET', host + '/products');
-    xhttp.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
-    xhttp.send(JSON.stringify(order));
-    
-}
+//     xhttp.open('GET', host + '/products');
+//     xhttp.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
+//     xhttp.send(JSON.stringify(order));
+// 
+// }
 
 function getAllProducts() {
     let xhttp = new XMLHttpRequest();
@@ -47,7 +47,6 @@ function getAllProducts() {
 
         if (xhttp.readyState==4 && xhttp.status==200) {
             let products = JSON.parse(xhttp.responseText);
-            console.log(products);
             loadAllProducts(products);
         }
     }
@@ -68,13 +67,6 @@ function loadOrders(orders) {
         
         var td1 = document.createElement("td");
         var td2 = document.createElement("td");
-        // let td3 = document.createElement("td");
-
-        // let button = document.createElement("button");
-        // button.setAttribute("class", "btn btn-outline-success");
-        // button.setAttribute("id", orders[x].id);
-        // button.innerHTML = "View Products";
-        
         
         var id = document.createTextNode(orders[x].id);
         var date = document.createTextNode(orders[x].created);
@@ -105,9 +97,9 @@ function loadAllProducts(products) {
     for (var x = 0; x < products.length; x++) {
 
         var tbody = document.querySelector("#products" + products[x].order.id)
-        console.log(tbody);
 
         var tr = document.createElement("tr");
+        var tdBuffer = document.createElement("td");
         var td1 = document.createElement("td");
         var td2 = document.createElement("td");
         var td3 = document.createElement("td");
@@ -118,56 +110,56 @@ function loadAllProducts(products) {
         var price = document.createTextNode(products[x].price)
         var manufacturer = document.createTextNode(products[x].manufacturer)
 
-        td1.appendChild(id);
+        // td1.appendChild(id);
         td2.appendChild(name);
         td3.appendChild(price);
         td4.appendChild(manufacturer);
 
-        tr.appendChild(td1);
-        tr.appendChild(td2);
-        tr.appendChild(td3);
-        tbody.appendChild(tr);
-    }
-}
-
-
-function loadProducts(products) {
-
-    for (var x = 0; x < products.length; x++) {
-        
-        var tbody = document.createElement("tbody");
-
-        var tr = document.createElement("tr");
-
-        var td1 = document.createElement("td");
-        var td2 = document.createElement("td");
-        var td3 = document.createElement("td");
-        var td4 = document.createElement("td");
-
-        var id = document.createTextNode(products[x].id)
-        var name = document.createTextNode(products[x].name)
-        var price = document.createTextNode(products[x].price)
-        var manufacturer = document.createTextNode(products[x].manufacturer)
-
-        td1.appendChild(id);
-        td2.appendChild(name);
-        td3.appendChild(price);
-        td4.appendChild(manufacturer);
-
+        tr.appendChild(tdBuffer);
         tr.appendChild(td1);
         tr.appendChild(td2);
         tr.appendChild(td3);
         tr.appendChild(td4);
-
         tbody.appendChild(tr);
+    }
+}
 
-        console.log(order);
-        console.log("#order" + products[x].order.id);
-        var selection = document.querySelector("#order" + products[x].order.id)
-        selection.append(tbody);
+
+// function loadProducts(products) {
+
+//     for (var x = 0; x < products.length; x++) {
+        
+//         var tbody = document.createElement("tbody");
+
+//         var tr = document.createElement("tr");
+
+//         var td1 = document.createElement("td");
+//         var td2 = document.createElement("td");
+//         var td3 = document.createElement("td");
+//         var td4 = document.createElement("td");
+
+//         var id = document.createTextNode(products[x].id)
+//         var name = document.createTextNode(products[x].name)
+//         var price = document.createTextNode(products[x].price)
+//         var manufacturer = document.createTextNode(products[x].manufacturer)
+
+//         td1.appendChild(id);
+//         td2.appendChild(name);
+//         td3.appendChild(price);
+//         td4.appendChild(manufacturer);
+
+//         tr.appendChild(td1);
+//         tr.appendChild(td2);
+//         tr.appendChild(td3);
+//         tr.appendChild(td4);
+
+//         tbody.appendChild(tr);
+
+//         var selection = document.querySelector("#order" + products[x].order.id)
+//         selection.append(tbody);
 
 
 
         
-    }
-}
+//     }
+// }
