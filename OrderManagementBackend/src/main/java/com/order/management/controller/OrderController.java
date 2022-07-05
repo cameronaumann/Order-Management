@@ -56,6 +56,7 @@ public class OrderController {
 	@PostMapping("/orders/new2") //working
 	@ResponseStatus(HttpStatus.CREATED)
 	public void newOrderPlus(@RequestBody List<Product> products) {
+		System.out.println(products + "\n");
 		log.info("REQUEST: " + "POST /orders/new2 @ " + LocalDateTime.now());
 		service.newOrderPlus(new Order(), products);
 	}

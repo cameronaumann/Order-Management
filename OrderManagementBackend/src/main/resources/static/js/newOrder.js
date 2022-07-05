@@ -1,5 +1,6 @@
 let host = 'http://localhost:8080/v1';
 let numberOfProducts = 1;
+let formNumber = 1;
 
 
 
@@ -9,17 +10,40 @@ form.addEventListener('submit', function(ev) {
     const xhttp = new XMLHttpRequest();
     xhttp.open('POST', host + '/orders/new2', true);
     xhttp.setRequestHeader('Content-Type', 'application/json; charset=UTF-8');
+
+
+    var keys = ["name", "price", "manufacturer"];
+
     var arr = [];
+    var formDataObject = Object.fromEntries(formData.entries());
+    // console.log(formDataObject);  
+
+    // for (var x = 0; x < numberOfProducts; x++) {
+    //   var object = {};
+    //   // formData.forEach(function(value, key) {
+    //   //     object[key] = value;
+    //   // });
+    //   for (var y = start; y < start + 3; y++) {
+    //   }
+    //   arr.push(object);
+    // }
     for (var x = 0; x < numberOfProducts; x++) {
       var object = {};
-      formData.forEach(function(value, key) {
-          object[key] = value;
-      });
+      for (const pair in formDataObject) {
+        if (pair == "name" + x) {
+          object["name"] = formDataObject[pair];
+        } else if (pair == "price" + x) {
+          object["price"] = formDataObject[pair];
+        } else if (pair == "manufacturer" + x) {
+          object["manufacturer"] = formDataObject[pair];
+        }
+      }
       arr.push(object);
     }
+
     xhttp.send(JSON.stringify(arr));
     ev.preventDefault();
-    window.location.replace("http://localhost:8080/html/manager.html");
+    window.location.href = "http://localhost:8080/html/manager.html";
   }, false);    
 
   function addProduct() {
@@ -28,20 +52,20 @@ form.addEventListener('submit', function(ev) {
     var div = document.createElement("div");
     div.setAttribute("class", "formDiv");
     var name = document.createElement("input");
-    name.setAttribute("name", "name");
+    name.setAttribute("name", "name" + formNumber);
     name.setAttribute("placeholder", "Product Name");
     name.setAttribute("type", "text");
     name.setAttribute("placeholder", "Product Name");
 
     var price = document.createElement("input");
-    price.setAttribute("name", "price");
+    price.setAttribute("name", "price" + formNumber);
     price.setAttribute("placeholder", "Price USD");
     price.setAttribute("type", "number");
     price.setAttribute("step", "0.01");
     price.setAttribute("min", "0.01");
     
     var manufacturer = document.createElement("input");
-    manufacturer.setAttribute("name", "manufacturer");
+    manufacturer.setAttribute("name", "manufacturer" + formNumber);
     manufacturer.setAttribute("placeholder", "Manufacturer")
     manufacturer.setAttribute("type", "text");
 
@@ -52,6 +76,7 @@ form.addEventListener('submit', function(ev) {
 
     var outer = document.querySelector("#newOrder");
     outer.appendChild(div);
+    formNumber++;
   }
 // -------------------------------------------------------
 // let submitButton = document.querySelector('#submit');

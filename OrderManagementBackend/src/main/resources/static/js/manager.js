@@ -73,8 +73,41 @@ function loadOrders(orders) {
 }
 
 function displaySearch(string) {
-    
+    var table = document.getElementById("display");
+    table.parentNode.removeChild(table);
+    var newTable = document.createElement("table");
+    newTable.setAttribute("id", "display");
+    newTable.setAttribute("class", "table");
+
+    var newThead = document.createElement("thead");
+    newThead.setAttribute("class", "table-dark");
+
+    var newTR = document.createElement("tr");
+    var td1 = document.createElement("td");
+    var td2 = document.createElement("td");
+    var td3 = document.createElement("td");
+    var td4 = document.createElement("td");
+    var td5 = document.createElement("td");
+
+    td1.innerHTML = "Order ID";
+    td2.innerHTML = "Created Date and Time"
+    td3.innerHTML = "Product Name"
+    td4.innerHTML = "Price"
+    td5.innerHTML = "Manufacturer"
+
+    newTR.appendChild(td1);
+    newTR.appendChild(td2);
+    newTR.appendChild(td3);
+    newTR.appendChild(td4);
+    newTR.appendChild(td5);
+    newThead.appendChild(newTR);
+    newTable.appendChild(newThead);
+    let section = document.querySelector("section");
+    section.appendChild(newTable);
+
 }
+
+
 
 function loadAllProducts(products) {
 
