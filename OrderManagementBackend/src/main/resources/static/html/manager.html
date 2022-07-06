@@ -15,8 +15,8 @@
 
 <body>
     <header class="navbar">
-        <h6 class="h6 text-secondary">OMS</h6>
-        <a class="btn btn-primary" href="/html/index.html">Back to Home</a>
+        <h6 class="h6 text-light">OMS</h6>
+        <a class="btn btn2" href="/html/index.html">Back to Home</a>
     </header>
 
     <main>
@@ -24,26 +24,28 @@
             <input type="text" placeholder="Search Products">
             <button>Sort By Toggle</button>
         </div> -->
-        <nav class="navbar navbar-expand-lg bg-light">
-            <div class="container-fluid">
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                        <li class="nav-item">
-                            <a class="btn btn-outline-primary" href="/html/newOrder.html">+</a>
-                        </li>
-                    </ul>
-                    <div class="d-flex">
-                        <input class="form-control me-2" id="searchInput" type="text" placeholder="Search" aria-label="Search">
-                        <button class="btn btn-outline-success" id="search" type="submit">Search</button>
-                        <button class="btn btn-outline-success" type="button">Sort By</button>
+        <div class="options">
+            <nav class="navbar navbar-expand-lg bg-light">
+                <div class="container-fluid">
+                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                            <li class="nav-item">
+                                <a class="btn btn3" href="/html/newOrder.html">+</a>
+                            </li>
+                        </ul>
+                        <div class="d-flex">
+                            <input class="form-control me-2" id="searchInput" type="text" placeholder="Search" aria-label="Search">
+                            <button class="btn btn3" id="search" type="submit">Search</button>
+                            <button class="btn btn3" type="button">Sort By</button>
+                        </div>
                     </div>
                 </div>
-            </div>
-        </nav>
+            </nav>
+        </div>
 
-        <section class="table-responsive">
-            <table id="display" class="table">
-                <thead class="table-dark">
+        <section class="">
+            <table id="display" class="table table-dark">
+                <thead>
                     <tr>
                         <td>Order ID</td>
                         <td>Created Date and Time</td>

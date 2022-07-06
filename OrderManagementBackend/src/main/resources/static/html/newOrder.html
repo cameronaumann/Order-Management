@@ -13,23 +13,26 @@
 </head>
 <body>
     <header class="navbar">
-        <h6 class="h6 text-secondary">OMS</h6>
-        <a class="btn btn-danger" id="cancel" href="/html/manager.html">Cancel Order</a>
+        <h6 class="h6 text-light">OMS</h6>
+        <a class="btn btn2" id="cancel" href="/html/manager.html">Cancel Order</a>
     </header>
-    <div class="container" id="container">
-        <form class="newOrder" id="newOrder" name="newOrder">
-            <input id="submit" class="btn btn-primary" type="submit" name="submit">
-            <div class="formDiv mb-3 align-items-center">
-                <input name="name0" type="text" placeholder="Product Name" required>
-                <input name="price0"  type="number" placeholder="Price USD" step="0.01" min="0.01" required>
-                <input name="manufacturer" type="text" placeholder="Manufacturer" required>
-                <!-- <label for="submit">Submit Order</label> -->
-            </div>
-            
-        </form>
-    </div>
-    <br>
-    <button id="add" class="btn btn-outline-success" onclick="addProduct()">Add Another Product to Your Order</button>
+    <main class="main">
+        <div class="" id="container">
+            <form class="" id="newOrder" name="newOrder">
+                <div>
+                    <input id="submit" class="btn btn3" type="submit" name="submit">
+                </div>
+                <div class="col-auto">
+                    <input name="name0" class="form-control" type="text" placeholder="Product Name" required>
+                    <input name="price0" class="form-control"  type="number" placeholder="Price USD" step="0.01" min="0.01" required>
+                    <input name="manufacturer0" class="form-control" type="text" placeholder="Manufacturer" required>
+                    <!-- <label for="submit">Submit Order</label> -->
+                </div>
+                
+            </form>
+            <button id="add" class="btn btn3" onclick="addProduct()">Add Another Product to Your Order</button>
+        </div>
+    </main>
     
 </body>
 <!-- JavaScript Bundle with Popper -->

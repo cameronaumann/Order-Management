@@ -1,4 +1,5 @@
-let host = 'http://localhost:8080/v1';
+let host = 'http://10.3.187.73:7001/v1';
+let host2 = 'http://localhost:8080/v1';
 
 const search = document.getElementById('search');
 search.addEventListener('click', function() {
@@ -140,43 +141,3 @@ async function loadAllProducts(products) {
         tbody.appendChild(tr);
     }
 }
-
-
-// function loadProducts(products) {
-
-//     for (var x = 0; x < products.length; x++) {
-        
-//         var tbody = document.createElement("tbody");
-
-//         var tr = document.createElement("tr");
-
-//         var td1 = document.createElement("td");
-//         var td2 = document.createElement("td");
-//         var td3 = document.createElement("td");
-//         var td4 = document.createElement("td");
-
-//         var id = document.createTextNode(products[x].id)
-//         var name = document.createTextNode(products[x].name)
-//         var price = document.createTextNode(products[x].price)
-//         var manufacturer = document.createTextNode(products[x].manufacturer)
-
-//         td1.appendChild(id);
-//         td2.appendChild(name);
-//         td3.appendChild(price);
-//         td4.appendChild(manufacturer);
-
-//         tr.appendChild(td1);
-//         tr.appendChild(td2);
-//         tr.appendChild(td3);
-//         tr.appendChild(td4);
-
-//         tbody.appendChild(tr);
-
-//         var selection = document.querySelector("#order" + products[x].order.id)
-//         selection.append(tbody);
-
-
-
-        
-//     }
-// }

@@ -1,4 +1,5 @@
-let host = 'http://localhost:8080/v1';
+let host = 'http://10.3.187.73:7001/v1';
+let host2 = 'http://localhost:8080/v1';
 let numberOfProducts = 1;
 let formNumber = 1;
 
@@ -12,21 +13,10 @@ form.addEventListener('submit', function(ev) {
     xhttp.setRequestHeader('Content-Type', 'application/json; charset=UTF-8');
 
 
-    // var keys = ["name", "price", "manufacturer"];
 
     var arr = [];
     var formDataObject = Object.fromEntries(formData.entries());
-    console.log(formDataObject);  
 
-    // for (var x = 0; x < numberOfProducts; x++) {
-    //   var object = {};
-    //   // formData.forEach(function(value, key) {
-    //   //     object[key] = value;
-    //   // });
-    //   for (var y = start; y < start + 3; y++) {
-    //   }
-    //   arr.push(object);
-    // }
     for (var x = 0; x < numberOfProducts; x++) {
       var object = {};
       for (const pair in formDataObject) {
@@ -40,25 +30,26 @@ form.addEventListener('submit', function(ev) {
       }
       arr.push(object);
     }
-
     xhttp.send(JSON.stringify(arr));x
     ev.preventDefault();
-    window.location.href = "http://localhost:8080/html/manager.html";
+    window.location.href = "/html/manager.html";
   }, false);    
 
   function addProduct() {
     numberOfProducts++;
 
     var div = document.createElement("div");
-    div.setAttribute("class", "formDiv align-items-center");
+    div.setAttribute("class", "col-auto");
     var name = document.createElement("input");
     name.setAttribute("name", "name" + formNumber);
+    name.setAttribute("class", "form-control");
     name.setAttribute("placeholder", "Product Name");
     name.setAttribute("type", "text");
     name.setAttribute("placeholder", "Product Name");
 
     var price = document.createElement("input");
     price.setAttribute("name", "price" + formNumber);
+    price.setAttribute("class", "form-control");
     price.setAttribute("placeholder", "Price USD");
     price.setAttribute("type", "number");
     price.setAttribute("step", "0.01");
@@ -66,6 +57,7 @@ form.addEventListener('submit', function(ev) {
     
     var manufacturer = document.createElement("input");
     manufacturer.setAttribute("name", "manufacturer" + formNumber);
+    manufacturer.setAttribute("class", "form-control");
     manufacturer.setAttribute("placeholder", "Manufacturer")
     manufacturer.setAttribute("type", "text");
 
@@ -78,22 +70,3 @@ form.addEventListener('submit', function(ev) {
     outer.appendChild(div);
     formNumber++;
   }
-// -------------------------------------------------------
-// let submitButton = document.querySelector('#submit');
-// submitButton.addEventListener("onclick", newOrder());
-
-
-// function newOrder() {
-
-//     var xhttp = new XMLHttpRequest();
-//     xhttp.open('POST', host + '/orders/new2');
-//     xhttp.setRequestHeader('Content-Type', 'application/json; charset=UTF-8');
-//     var formElement = document.querySelector("#newOrder");
-//     var formData = new FormData(formElement);
-//     formData.append()
-//     xhttp.send(JSON.stringify(object));
-// }
-
-function returnToDisplay() {
-    // todo
-}
